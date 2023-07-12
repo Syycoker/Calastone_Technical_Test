@@ -19,7 +19,7 @@ public class NoMiddleVowelFilter : IFilter
     int middleIndex = length / 2;
 
     if (length % 2 == 0)
-      return IsVowel(word[middleIndex]) && IsVowel(word[middleIndex - 1]);
+      return IsVowel(word[middleIndex]) || IsVowel(word[middleIndex - 1]);
     else
       return IsVowel(word[middleIndex]);
   }

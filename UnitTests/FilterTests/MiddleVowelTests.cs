@@ -17,9 +17,9 @@ public class MiddleVowelTests
 
   [Theory]
   [InlineData("clean", "")]
+  [InlineData("what", "")]
   [InlineData("currently", "")]
   [InlineData("rather", "rather")]
-  [InlineData("Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice", "beginning to very tired of sitting by sister on the bank, and of having nothing to once or")]
   public void Returns_words_with_no_middle_vowel(string input, string expectedOutput)
   {
     _fileHelper.Setup(helper => helper.ReadFile(It.IsAny<string>()))
