@@ -10,6 +10,7 @@ public class FilterRepository
 	private readonly List<IFilter> _availableFilters = new List<IFilter>
 	{
 		new NoMiddleVowelFilter(),
+		new NoLessThanThreeLettersFilter()
 	};
 
 	public FilterRepository(IFileHelper fileHelper)
@@ -23,6 +24,14 @@ public class FilterRepository
 			.Where(filter => filter.GetType() == typeof(NoMiddleVowelFilter));
 
 		return FilterInput(filteredFilters, filePath);
+  }
+
+  public string NoLessThanThreeLetterWordsFilter(string filePath)
+  {
+    var filteredFilters = _availableFilters
+      .Where(filter => filter.GetType() == typeof(NoLessThanThreeLettersFilter));
+
+    return FilterInput(filteredFilters, filePath);
   }
 
   private string FilterInput(IEnumerable<IFilter> filters, string filePath)
