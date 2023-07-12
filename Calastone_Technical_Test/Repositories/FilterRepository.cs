@@ -4,14 +4,13 @@ namespace Calastone_Technical_Test.Repositories;
 
 public class FilterRepository
 {
-	private readonly string _filePath;
 	private readonly List<IFilter> _availableFilters = new List<IFilter>
 	{
 	};
 
-	public FilterRepository(string filePath)
+	public void FilterInput(string inputFilePath)
 	{
-		_filePath = filePath;
+		var file = ReadFile(inputFilePath);
 	}
 
 	private string ReadFile(string filePath)

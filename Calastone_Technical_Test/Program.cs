@@ -6,6 +6,7 @@ public static class Program
 {
   public static void Main(string[] args)
   {
-    var filterRepository = new FilterRepository("./Assets/file.txt");
+    var filterRepository = new FilterRepository();
+    filterRepository.FilterInput("./Assets/file.txt");
   }
 }
