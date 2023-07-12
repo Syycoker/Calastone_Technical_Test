@@ -8,14 +8,8 @@ public class FilterRepository
 	{
 	};
 
-	public void FilterInput(string inputFilePath)
+	public List<string> FilterInput(string input)
 	{
-		var file = ReadFile(inputFilePath);
-	}
-
-	private string ReadFile(string filePath)
-	{
-		using var reader = new StreamReader(filePath);
-		return reader.ReadToEnd();
+		return new List<string>();
 	}
 }
