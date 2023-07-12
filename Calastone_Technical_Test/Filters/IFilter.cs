@@ -2,5 +2,6 @@
 
 public interface IFilter
 {
-  public string Filter(IEnumerable<string> words);
+  public IEnumerable<string> Filter(IEnumerable<string> words);
+  public bool CanFilter(string word);
 }

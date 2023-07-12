@@ -17,6 +17,8 @@ namespace UnitTests
 
     [Theory]
     [InlineData("clean", "")]
+    [InlineData("currently", "")]
+    [InlineData("rather", "rather")]
     public void Returns_words_with_no_middle_vowel(string input, string expectedOutput)
     {
       _fileHelper.Setup(helper => helper.ReadFile(It.IsAny<string>()))

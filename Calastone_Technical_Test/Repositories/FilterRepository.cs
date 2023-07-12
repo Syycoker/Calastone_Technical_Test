@@ -32,7 +32,7 @@ public class FilterRepository
 		var splitInput = input.Split(" ");
 
 		foreach (var filter in filters)
-      input = filter.Filter(splitInput);
+      splitInput = filter.Filter(splitInput).ToArray();
 
     return string.Join(" ", splitInput);
 	}
