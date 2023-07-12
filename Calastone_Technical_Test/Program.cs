@@ -8,6 +8,8 @@ public static class Program
   public static void Main(string[] args)
   {
     var filterRepository = new FilterRepository(new FileHelper());
-    filterRepository.NoMiddleVowelFilter("./Assets/file.txt");
+    var filteredInput = filterRepository.AllFilters("./Assets/file.txt");
+
+    Console.WriteLine(filteredInput);
   }
 }
