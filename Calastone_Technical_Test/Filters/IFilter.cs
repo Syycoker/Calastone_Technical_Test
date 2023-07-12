@@ -2,5 +2,5 @@
 
 public interface IFilter
 {
-  public string Filter(string input);
+  public string Filter(IEnumerable<string> words);
 }

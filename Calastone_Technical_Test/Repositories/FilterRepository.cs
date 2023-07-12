@@ -29,9 +29,11 @@ public class FilterRepository
 	{
 		var input = _fileHelper.ReadFile(filePath);
 
-		foreach (var filter in filters)
-      input = filter.Filter(input);
+		var splitInput = input.Split(" ");
 
-    return input;
+		foreach (var filter in filters)
+      input = filter.Filter(splitInput);
+
+    return string.Join(" ", splitInput);
 	}
 }

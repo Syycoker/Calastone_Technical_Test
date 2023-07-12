@@ -16,8 +16,8 @@ namespace UnitTests
     }
 
     [Theory]
-    [InlineData("Alice", "")]
-    public void Returns_a_single_word_with_no_middle_vowel(string input, string expectedOutput)
+    [InlineData("clean", "")]
+    public void Returns_words_with_no_middle_vowel(string input, string expectedOutput)
     {
       _fileHelper.Setup(helper => helper.ReadFile(It.IsAny<string>()))
         .Returns(input);

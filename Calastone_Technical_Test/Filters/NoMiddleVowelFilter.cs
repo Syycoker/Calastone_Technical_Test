@@ -4,7 +4,9 @@ namespace Calastone_Technical_Test.Filters;
 
 public class NoMiddleVowelFilter : IFilter
 {
-  public string Filter(string input)
+  private readonly IEnumerable<char> _vowels = new List<char> { 'a', 'e', 'i', 'o', 'u' };
+
+  public string Filter(IEnumerable<string> words)
   {
     throw new NotImplementedException();
   }
