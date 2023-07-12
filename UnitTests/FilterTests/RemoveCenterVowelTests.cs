@@ -6,15 +6,13 @@ namespace UnitTests
 {
   public class RemoveCenterVowelTests
   {
-    private readonly string _filePath;
-    private readonly FilterRepository _filterRepository;
     private readonly Mock<IFileHelper> _fileHelper;
+    private readonly FilterRepository _filterRepository;
 
     public RemoveCenterVowelTests()
     {
-      _filePath = "./Assets/file.txt";
-      _filterRepository = new FilterRepository();
       _fileHelper = new Mock<IFileHelper>();
+      _filterRepository = new FilterRepository(_fileHelper.Object);
     }
 
     [Theory]
@@ -24,7 +22,7 @@ namespace UnitTests
       _fileHelper.Setup(helper => helper.ReadFile(It.IsAny<string>()))
         .Returns(input);
 
-      var filteredInput = _filterRepository.FilterInput(_filePath);
+      var filteredInput = _filterRepository.FilterInput("anyFilePath");
 
       Assert.Equal(expectedOutput, filteredInput);
     }
