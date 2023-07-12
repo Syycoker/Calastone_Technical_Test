@@ -2,5 +2,5 @@
 
 public interface IFilter
 {
-  public List<string> Filter(string input);
+  public string Filter(string input);
 }

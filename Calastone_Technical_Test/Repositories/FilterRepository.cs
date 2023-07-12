@@ -8,8 +8,8 @@ public class FilterRepository
 	{
 	};
 
-	public List<string> FilterInput(string input)
+	public string FilterInput(string input)
 	{
-		return new List<string>();
+		return string.Empty;
 	}
 }

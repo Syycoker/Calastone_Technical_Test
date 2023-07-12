@@ -24,8 +24,9 @@ namespace UnitTests
       _fileHelper.Setup(helper => helper.ReadFile(It.IsAny<string>()))
         .Returns(input);
 
-      var actualWords = _filterRepository.FilterInput(_filePath);
-      Assert.True(actualWords.Count == expectedOutput.Length);
+      var filteredInput = _filterRepository.FilterInput(_filePath);
+
+      Assert.Equal(expectedOutput, filteredInput);
     }
   }
 }
