@@ -1,4 +1,5 @@
-﻿using Calastone_Technical_Test.Helpers;
+﻿using Calastone_Technical_Test.Filters;
+using Calastone_Technical_Test.Helpers;
 using Calastone_Technical_Test.Logic;
 
 namespace Calastone_Technical_Test.Repositories;
@@ -16,11 +17,19 @@ public class FilterRepository
 		_fileHelper = fileHelper;
 	}
 
-	public string FilterInput(string filePath)
+  public string NoMiddleVowelFilter(string filePath)
+  {
+		var filteredFilters = _availableFilters
+			.Where(filter => filter.GetType() == typeof(NoMiddleVowelFilter));
+
+		return FilterInput(filteredFilters, filePath);
+  }
+
+  private string FilterInput(IEnumerable<IFilter> filters, string filePath)
 	{
 		var input = _fileHelper.ReadFile(filePath);
 
-		foreach (var filter in _availableFilters)
+		foreach (var filter in filters)
       input = filter.Filter(input);
 
     return input;
