@@ -9,7 +9,7 @@ public class FilterRepository
 	private readonly IFileHelper _fileHelper;
 	private readonly List<IFilter> _availableFilters = new List<IFilter>
 	{
-		
+		new NoMiddleVowelFilter(),
 	};
 
 	public FilterRepository(IFileHelper fileHelper)

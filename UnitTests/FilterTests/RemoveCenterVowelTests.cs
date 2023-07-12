@@ -22,7 +22,7 @@ namespace UnitTests
       _fileHelper.Setup(helper => helper.ReadFile(It.IsAny<string>()))
         .Returns(input);
 
-      var filteredInput = _filterRepository.FilterInput("anyFilePath");
+      var filteredInput = _filterRepository.NoMiddleVowelFilter("anyFilePath");
 
       Assert.Equal(expectedOutput, filteredInput);
     }
