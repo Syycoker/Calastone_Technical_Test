@@ -4,12 +4,12 @@ using Moq;
 
 namespace UnitTests.FilterTests;
 
-public class RemoveCenterVowelTests
+public class MiddleVowelTests
 {
   private readonly Mock<IFileHelper> _fileHelper;
   private readonly FilterRepository _filterRepository;
 
-  public RemoveCenterVowelTests()
+  public MiddleVowelTests()
   {
     _fileHelper = new Mock<IFileHelper>();
     _filterRepository = new FilterRepository(_fileHelper.Object);

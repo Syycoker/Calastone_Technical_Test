@@ -10,7 +10,8 @@ public class FilterRepository
 	private readonly List<IFilter> _availableFilters = new List<IFilter>
 	{
 		new NoMiddleVowelFilter(),
-		new NoLessThanThreeLettersFilter()
+		new NoLessThanThreeLettersFilter(),
+    new NoWordsWithLetterTFilter()
 	};
 
 	public FilterRepository(IFileHelper fileHelper)
@@ -18,31 +19,32 @@ public class FilterRepository
 		_fileHelper = fileHelper;
 	}
 
-  public string NoMiddleVowelFilter(string filePath)
-  {
-		var filteredFilters = _availableFilters
-			.Where(filter => filter.GetType() == typeof(NoMiddleVowelFilter));
+	public string AllFilters(string filePath)
+	=> FilterInput(_availableFilters, filePath);
 
-		return FilterInput(filteredFilters, filePath);
-  }
+  public string NoMiddleVowelFilter(string filePath)
+  => FilterInput(GetFilter<NoMiddleVowelFilter>(), filePath);
 
   public string NoLessThanThreeLetterWordsFilter(string filePath)
-  {
-    var filteredFilters = _availableFilters
-      .Where(filter => filter.GetType() == typeof(NoLessThanThreeLettersFilter));
+	=> FilterInput(GetFilter<NoLessThanThreeLettersFilter>(), filePath);
 
-    return FilterInput(filteredFilters, filePath);
-  }
+  public string NoWordsWithLetterTFilter(string filePath)
+  => FilterInput(GetFilter<NoWordsWithLetterTFilter>(), filePath);
 
   private string FilterInput(IEnumerable<IFilter> filters, string filePath)
 	{
+		const string delimiter = " ";
 		var input = _fileHelper.ReadFile(filePath);
 
-		var splitInput = input.Split(" ");
+		var splitInput = input.Split(delimiter);
 
 		foreach (var filter in filters)
       splitInput = filter.Filter(splitInput).ToArray();
 
-    return string.Join(" ", splitInput);
+    return string.Join(delimiter, splitInput);
 	}
+
+  private IEnumerable<IFilter> GetFilter<T>() where T : IFilter
+    => _availableFilters
+    .Where(filter => filter.GetType() == typeof(T));
 }
